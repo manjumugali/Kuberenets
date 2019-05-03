@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx" 
+  name: app-ingress
+spec:
+  rules:
+  - host: chatappmanju.manju-kubernets.analyzedevops.com
+    http:
+      paths:
+      - backend:
+          serviceName: application
+          servicePort: 80
+        path: /

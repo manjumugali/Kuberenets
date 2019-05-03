@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1 
+kind: Deployment
+metadata:
+ name: application
+spec:
+ template:
+   metadata:
+     labels:
+       app: application
+   spec:
+     containers:
+     - image: 218322401723.dkr.ecr.ap-south-1.amazonaws.com/docker-images:chatapp
+       imagePullPolicy: "Always"
+       name: application
+       env:
+       - name: POSTGRES_HOST
+         value: chatappdb-postgresql
+       - name: POSTGRES_PORT
+         value: "5432"
+       - name: POSTGRES_DATABASE
+         value: chatapp
+       - name: POSTGRES_USER
+         value: postgres
+       - name: POSTGRES_PASSWORD
+         value: chatapp123
+       ports:
+       - containerPort: 8000
+     
+
